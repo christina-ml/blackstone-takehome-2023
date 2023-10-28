@@ -3,10 +3,14 @@ const meetingRooms = express.Router();
 
 const {
     getAllMeetingRooms,
+    getMeetingRoomById,
     createMeetingRoom
 } = require("../queries/meetingRooms");
 
-// View all meeting rooms
+/*ff
+    GET	/api/meeting-rooms
+    View all meeting rooms
+*/
 meetingRooms.get("/", async (req, res)=> {
     try {
         const allMeetingRooms = await getAllMeetingRooms();
@@ -20,7 +24,34 @@ meetingRooms.get("/", async (req, res)=> {
     }
 })
 
-// Create a meeting room
+/*
+    GET  /api/meeting-rooms/:id
+    Get all meeting rooms by id
+*/
+meetingRooms.get("/:id", async (req, res)=> {
+    const { id } = req.params;
+    try {
+        const meetingRoom = await getMeetingRoomById(id);
+        if (meetingRoom){
+            res.status(200).json(meetingRoom);
+        } else {
+            res.status(500).json({ error: `Error: meeting room with ID ${id} not found.` });
+        } 
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+/*
+    GET	/api/meeting-rooms/:id/bookings
+    View room bookings
+*/
+
+
+/*
+    POST    /api/meeting-rooms
+    Create a meeting room
+*/ 
 meetingRooms.post("/", async (req, res)=> {
     const { body } = req;
     try {
@@ -35,6 +66,9 @@ meetingRooms.post("/", async (req, res)=> {
     }
 })
 
-// View room bookings
+/*
+    Extra challenge
+    POST	/api/meeting-rooms/available
+*/
 
 module.exports = meetingRooms;

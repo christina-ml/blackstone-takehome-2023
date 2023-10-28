@@ -10,6 +10,16 @@ const getAllMeetingRooms = async() => {
     }
 }
 
+// get meeting room by id
+const getMeetingRoomById = async(id) => {
+    try {
+        const meetingRoom = await db.oneOrNone("SELECT * FROM meeting_rooms WHERE id=$1", id);
+        return meetingRoom;
+    } catch (error) {
+        return error;
+    }
+}
+
 // Create a meeting room
 const createMeetingRoom = async (meeting) => {
     try {
@@ -27,5 +37,6 @@ const createMeetingRoom = async (meeting) => {
 
 module.exports = {
     getAllMeetingRooms,
+    getMeetingRoomById,
     createMeetingRoom
 };
