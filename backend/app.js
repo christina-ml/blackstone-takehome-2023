@@ -6,10 +6,12 @@ const app = express();
 
 // Controllers
 const meetingRoomsController = require("./controllers/meetingRoomsController.js");
+const bookingsController = require("./controllers/bookingsController.js");
 
 // Middleware
 app.use(express.json());
 app.use("/meeting-rooms", meetingRoomsController);
+app.use("/bookings", bookingsController);
 
 // Routes
 app.get("/", (_req, res) => {
