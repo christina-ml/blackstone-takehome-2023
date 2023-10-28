@@ -3,6 +3,7 @@ const meetingRooms = express.Router();
 
 const {
     getAllMeetingRooms,
+    createMeetingRoom
 } = require("../queries/meetingRooms");
 
 // View all meeting rooms
@@ -20,6 +21,19 @@ meetingRooms.get("/", async (req, res)=> {
 })
 
 // Create a meeting room
+meetingRooms.post("/", async (req, res)=> {
+    const { body } = req;
+    try {
+        const newMeetingRoom = await createMeetingRoom(body);
+        if (newMeetingRoom.id){
+            res.status(200).json(newMeetingRoom);
+        } else {
+            res.status(500).json({ error: "Error: meeting room creation error" });
+        }
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 // View room bookings
 
