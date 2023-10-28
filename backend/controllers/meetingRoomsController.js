@@ -7,7 +7,11 @@ const {
     createMeetingRoom
 } = require("../queries/meetingRooms");
 
-/*ff
+// Controller for nested route
+const meetingRoomsBookingsController = require("./meetingRoomsBookingsController.js");
+meetingRooms.use("/:meetingRoomId/bookings", meetingRoomsBookingsController);
+
+/*
     GET	/api/meeting-rooms
     View all meeting rooms
 */
@@ -41,12 +45,6 @@ meetingRooms.get("/:id", async (req, res)=> {
         console.log(err);
     }
 })
-
-/*
-    GET	/api/meeting-rooms/:id/bookings
-    View room bookings
-*/
-
 
 /*
     POST    /api/meeting-rooms
