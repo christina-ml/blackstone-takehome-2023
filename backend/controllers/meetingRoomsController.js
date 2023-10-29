@@ -15,7 +15,7 @@ meetingRooms.use("/:meetingRoomId/bookings", meetingRoomsBookingsController);
     GET	/api/meeting-rooms
     View all meeting rooms
 */
-meetingRooms.get("/", async (req, res)=> {
+meetingRooms.get("/", async (_req, res)=> {
     try {
         const allMeetingRooms = await getAllMeetingRooms();
         if (allMeetingRooms[0]){
@@ -30,7 +30,7 @@ meetingRooms.get("/", async (req, res)=> {
 
 /*
     GET  /api/meeting-rooms/:id
-    Get all meeting rooms by id
+    Get all meeting rooms by meeting room id
 */
 meetingRooms.get("/:id", async (req, res)=> {
     const { id } = req.params;
