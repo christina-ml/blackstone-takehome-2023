@@ -41,8 +41,19 @@ const createBooking = async (booking) => {
     }
 }
 
+// Delete a booking by its ID
+const deleteBookingById = async (id) => {
+    try {
+		const deletedBooking = await db.one("DELETE FROM bookings WHERE id = $1 RETURNING *", id);
+		return deletedBooking;
+	} catch (err) {
+		return err;
+	}
+}
+
 module.exports = {
 	getAllBookings,
     getBookingById,
-    createBooking
+    createBooking,
+    deleteBookingById
 };

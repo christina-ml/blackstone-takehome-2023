@@ -4,10 +4,14 @@ const bookings = express.Router();
 const {
     getAllBookings, 
 	getBookingById,
-    createBooking 
+    createBooking,
+	deleteBookingById
 } = require("../queries/bookings");
 
-// GET	/api/bookings
+/*
+	GET	/api/bookings
+	get all bookings
+*/
 bookings.get("/", async (_req, res) => {
 	try {
 		const allBookings = await getAllBookings();
@@ -39,8 +43,10 @@ bookings.get("/:id", async (req, res)=> {
     }
 })
 
-// POST	/api/bookings
-// Create a booking
+/*
+	POST	/api/bookings
+	Create a booking
+*/
 bookings.post("/", async (req, res) => {
 	const { body } = req;
 	try {
@@ -55,6 +61,22 @@ bookings.post("/", async (req, res) => {
 	}
 });
 
-// DELETE	/api/bookings/:id
+/*
+	DELETE	/api/bookings/:id
+	Delete a booking by its ID
+*/
+bookings.delete("/:id", async (req, res) => {
+	const { id } = req.params;
+	try {
+		const deletedBooking = await deleteBookingById(id);
+		if (deletedBooking.id) {
+			res.status(200).json(deletedBooking);
+		} else {
+			res.status(404).json({ error: `Booking with id ${id} not found` });
+		}
+	} catch (err) {
+		console.log(err);
+	}
+})
 
 module.exports = bookings;
