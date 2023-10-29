@@ -10,6 +10,16 @@ const getAllBookings = async () => {
 	}
 };
 
+// get bookings  by id
+const getBookingById = async(id) => {
+    try {
+        const bookingById = await db.oneOrNone("SELECT * FROM bookings WHERE id=$1", id);
+        return bookingById;
+    } catch (error) {
+        return error;
+    }
+}
+
 // create a booking
 const createBooking = async (booking) => {
     const { meeting_name, meeting_room_id, start_date, end_date, attendees }  = booking;
@@ -33,5 +43,6 @@ const createBooking = async (booking) => {
 
 module.exports = {
 	getAllBookings,
+    getBookingById,
     createBooking
 };
