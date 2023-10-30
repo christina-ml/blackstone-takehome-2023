@@ -23,18 +23,32 @@ const getBookingById = async(id) => {
 // create a booking
 const createBooking = async (booking) => {
     const { meeting_name, meeting_room_id, start_date, end_date, attendees }  = booking;
+
+    const bookingAlreadyExists = await db.oneOrNone("SELECT * FROM bookings WHERE meeting_room_id = $1 AND (start_date >= $2 AND end_date <= $3)",
+        [meeting_room_id, start_date, end_date]
+    );
+
     try {
-        const newBooking = await db.oneOrNone(
-            "INSERT INTO bookings (meeting_name, meeting_room_id, start_date, end_date, attendees) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-            [
-                meeting_name,
-                meeting_room_id,
-                start_date,
-                end_date,
-                attendees
-            ]
-        );
-        return newBooking;
+        if (!bookingAlreadyExists){
+            // console.log ("No conflicts found; proceed with the booking")
+            // console.log("bookingAlreadyExists:", bookingAlreadyExists)
+
+            const newBooking = await db.oneOrNone(
+                "INSERT INTO bookings (meeting_name, meeting_room_id, start_date, end_date, attendees) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+                [
+                    meeting_name,
+                    meeting_room_id,
+                    start_date,
+                    end_date,
+                    attendees
+                ]
+            );
+            return newBooking;
+        } else {
+            // console.log("-->:", bookingAlreadyExists)
+            // console.log("error - booking already exists. There is a conflict; do not proceed with the booking")
+        }
+
 
     } catch (err) {
         return err;

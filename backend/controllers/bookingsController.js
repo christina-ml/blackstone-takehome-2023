@@ -8,6 +8,9 @@ const {
 	deleteBookingById
 } = require("../queries/bookings");
 
+// import validations file, and then inject as middleware into POST
+const { validateCreateBooking } = require("../validations/bookingsValidations.js");
+
 /*
 	GET	/api/bookings
 	get all bookings
@@ -46,8 +49,12 @@ bookings.get("/:id", async (req, res)=> {
 /*
 	POST	/api/bookings
 	Create a booking
+
+	Create a booking for a meeting room
+	All fields are required except attendees
+	Validates that room is available to book
 */
-bookings.post("/", async (req, res) => {
+bookings.post("/", validateCreateBooking, async (req, res) => {
 	const { body } = req;
 	try {
 		const newBooking = await createBooking(body);
