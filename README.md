@@ -32,6 +32,19 @@ Technologies:
 - [React.js](https://react.dev)
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+### Dependencies
+Libraries:
+- [MaterialUI](https://mui.com/):
+```
+npm install @mui/material @emotion/react @emotion/styled
+```
+- [SCSS/SASS](https://sass-lang.com/install/) - for SCSS styling
+
+### MaterialUI
+References to documentation:
+- [Tabs](https://mui.com/material-ui/react-tabs/)
+
 # Deployment
 Backend Deployment:
 - [ElephantSQL](https://www.elephantsql.com/)
