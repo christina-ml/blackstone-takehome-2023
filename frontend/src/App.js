@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 
 // Components
 import Home from "./Components/Home";
@@ -8,11 +8,13 @@ import NewMeetingRoom from "./Components/NewMeetingRoom";
 import Bookings from "./Components/Bookings";
 import SingleBooking from "./Components/SingleBooking";
 import PageNotFound from "./Components/PageNotFound";
+import Navbar from "./Components/Navbar";
 
 function App() {
 	return (
 		<div className="App">
 			<Router>
+				<Navbar/>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/meetingrooms/:id" element={<SingleMeetingRoom />} />
