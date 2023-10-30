@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SingleMeetingRoom from "./SingleMeetingRoom";
+import MeetingRooms from "./MeetingRooms";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -20,7 +20,7 @@ const Home = () => {
 		<div>
 			{meetingRooms.map((meetingRoom) => {
               return (
-			  	<SingleMeetingRoom 
+			  	<MeetingRooms 
 					key={meetingRoom.id} 
 					meetingRoom={meetingRoom}
 				/>
