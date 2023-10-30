@@ -24,8 +24,14 @@ Technologies:
 - [express](https://expressjs.com) - Node.js web application framework
 - [dotenv](https://www.npmjs.com/package/dotenv) - To use environment variables from the `.env` file.
 - [pg-promise](https://www.npmjs.com/package/pg-promise) - PostgreSQL interface for Node.js
+- [cors](https://www.npmjs.com/package/cors) - Cross-origin resource sharing (CORS)
 
 # Frontend
 
 Technologies: 
 - [React.js](https://react.dev)
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Deployment
+Backend Deployment:
+- [ElephantSQL](https://www.elephantsql.com/)
