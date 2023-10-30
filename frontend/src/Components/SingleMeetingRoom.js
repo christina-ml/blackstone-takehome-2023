@@ -1,20 +1,24 @@
 import React from "react";
 import "./SingleMeetingRoom.scss";
 
-const SingleMeetingRoom = ({meetingRoom}) => {
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { GoPeople } from "react-icons/go";
+
+const SingleMeetingRoom = ({ meetingRoom }) => {
 	return (
 		<div className="SingleMeetingRoom">
-			<div>
-				ID: {meetingRoom.id}
+			<div className="SingleMeetingRoom__name">{meetingRoom.name}</div>
+			<div className="SingleMeetingRoom__capacity">
+				<GoPeople />
+				<span className="SingleMeetingRoom__capacity__capacityDetails">
+					Capacity: {meetingRoom.capacity}
+				</span>
 			</div>
-			<div>
-				Name: {meetingRoom.name}
-			</div>
-			<div>
-				Capacity: {meetingRoom.capacity}
-			</div>
-			<div>
-				Floor: {meetingRoom.floor}
+			<div className="SingleMeetingRoom__floor">
+				<HiOutlineBuildingOffice2 />
+				<span className="SingleMeetingRoom__floor__floorDetails">
+					Floor: {meetingRoom.floor}
+				</span>
 			</div>
 		</div>
 	);
