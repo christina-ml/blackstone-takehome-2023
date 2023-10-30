@@ -1,5 +1,6 @@
 // Dependencies
 const express = require("express");
+const cors = require('cors');
 
 // Configuration
 const app = express();
@@ -10,6 +11,7 @@ const bookingsController = require("./controllers/bookingsController.js");
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use("/meeting-rooms", meetingRoomsController);
 app.use("/bookings", bookingsController);
 
