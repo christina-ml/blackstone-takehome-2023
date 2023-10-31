@@ -11,15 +11,16 @@ import styled from "@mui/system/styled";
 // StyledTab component for setting background color for active Tab from MUI
 const StyledTab = styled(Tab)(({ isActive }) => (
     {
-        backgroundColor: isActive ? "ghostwhite" : "lightgrey",
+        backgroundColor: isActive ? "white" : "lightgrey",
         border: isActive ? "2px solid #4d4d4d" : "1px solid #4d4d4d",
         borderStyle: isActive ? "solid solid" : "none solid",
         borderRadius: isActive ? "5px" : "0px",
+		color: isActive ? "rgb(74,74,74)" : "rgb(74,74,74)",
         margin: isActive ? "-1px 0px -1px 0px" : "0px",
         "&.Mui-selected": {
-            backgroundColor: isActive ? "ghostwhite" : "lightgrey",
-            color: isActive ? "#4d4d4d" : "#4d4d4d",
-            boxShadow: isActive ? "0px 0px 0px 2px #4d4d4d" : "0px"
+            backgroundColor: isActive ? "white" : "lightgrey",
+            color: isActive ? "rgb(74,74,74)" : "rgb(74,74,74)",
+            boxShadow: isActive ? "0px 0px 0px 2px #4d4d4d" : "0px",
         },
     }
 ));
@@ -45,7 +46,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "17px",
+							fontSize: "18px",
 						}}
 						value={0}
 						isActive={currentTab === 0}
@@ -57,7 +58,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "17px",
+							fontSize: "18px",
 						}}
 						value={1}
 						isActive={currentTab === 1}
@@ -69,7 +70,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "17px",
+							fontSize: "18px",
 						}}
 						value={2}
 						isActive={currentTab === 2}
