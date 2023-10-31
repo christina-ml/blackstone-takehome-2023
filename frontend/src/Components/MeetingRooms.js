@@ -3,11 +3,14 @@ import "./MeetingRooms.scss";
 
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GoPeople } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const MeetingRooms = ({ meetingRoom }) => {
 	return (
 		<div className="MeetingRooms">
-			<div className="MeetingRooms__name">{meetingRoom.name}</div>
+			<div className="MeetingRooms__name">
+				<Link to={`meetingrooms/${meetingRoom.id}`}>{meetingRoom.name}</Link>
+			</div>
 			<div className="MeetingRooms__capacity">
 				<GoPeople />
 				<span className="MeetingRooms__capacity__capacityDetails">
