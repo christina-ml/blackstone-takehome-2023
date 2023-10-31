@@ -1,0 +1,42 @@
+@import "../designUtils/colors";
+
+.PageNotFound {
+    text-align: center;
+    padding: 20px;
+
+    &__notFoundMessage {
+        display: inline-block;
+        padding: 15px;
+        border: 10px solid $black;
+        border-radius: 4px;
+    }
+
+    &__description {
+        margin: 15px 0px;
+        font-size: 20px;
+    }
+
+    &_returnHome {
+        margin: 5px;
+        display: inline-block;
+        padding: 10px;
+        background: $grey;
+        border: 1px solid $grey;
+        border-radius: 4px;
+        cursor: pointer;
+        text-transform: uppercase;
+        
+        a {
+            text-decoration: none;
+            color: $black;
+        }
+        &:hover {
+            background: $white;
+            padding: 10px;
+            border: 1px solid $black;
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
