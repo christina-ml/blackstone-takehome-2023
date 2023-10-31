@@ -1,0 +1,20 @@
+.SingleMeetingRoom {
+	&__details {
+		padding: 20px 5px 10px 5px;
+		display: flex;
+		justify-content: space-between;
+
+		&__name {
+			font-weight: 600;
+			font-size: 22px;
+		}
+		&__capacity {
+			font-size: 18px;
+			font-weight: 300;
+		}
+		&__floor {
+			font-size: 18px;
+			font-weight: 300;
+		}
+	}
+}
