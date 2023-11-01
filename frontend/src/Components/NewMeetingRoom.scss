@@ -1,0 +1,15 @@
+@import "../designUtils/fonts";
+
+.NewMeetingRoom {
+    &__roomName {
+        font-weight: 600;
+        font-size: 22px;
+        font-family: $headerFontFamily;
+    }
+
+    form {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
