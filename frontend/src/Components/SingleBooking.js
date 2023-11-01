@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SingleBooking.scss";
 
 // react icons
@@ -7,8 +7,27 @@ import { GoStopwatch } from "react-icons/go";
 // Helper functions
 import convertISOStringToDate from "../Helpers/convertISOStringToDate";
 import convertISOStringToTime from "../Helpers/convertISOStringToTime";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const SingleBooking = ({ booking }) => {
+const API = process.env.REACT_APP_API_URL;
+
+const SingleBooking = () => {
+	const [booking, setBooking] = useState([]);
+
+	let { id } = useParams();
+
+	useEffect(() => {
+		axios
+			.get(API + `/bookings/${id}`)
+			.then((res) => {
+				setBooking(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, [id]);
+
 	const { meeting_name, start_date, end_date} = booking;
 
 	return (

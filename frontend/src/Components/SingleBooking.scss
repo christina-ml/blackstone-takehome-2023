@@ -1,13 +1,13 @@
 @import "../designUtils/colors";
 
 .SingleBooking {
-    border: 3px solid $black;
+    // border: 3px solid transparent;
     border-radius: 7px;
     margin: 10px 0px;
-    padding: 20px;
+    padding: 20px 0px;
     &__meetingName {
         font-size: 24px;
-        font-weight: 500;
+        font-weight: 600;
         padding: 0px 0px 10px 0px;
     }
     &__details {
