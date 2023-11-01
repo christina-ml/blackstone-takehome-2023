@@ -36,7 +36,7 @@ const SingleMeetingRoomBookings = () => {
 					meetingRoomBooking;
 
 				return (
-					<div className="SingleMeetingRoomBookingDetails">
+					<div className="SingleMeetingRoomBookingDetails" key={meetingRoomBooking.id}>
 						<div className="SingleMeetingRoomBookingDetails__bookingName">
 							<Link to={`/bookings/${id}`}>{meeting_name}</Link>
 						</div>
