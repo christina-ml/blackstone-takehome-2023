@@ -13,12 +13,28 @@ const SingleBooking = ({ booking }) => {
 
 	return (
 		<div className="SingleBooking">
-			<div>{meeting_name}</div>
-			<div>
-				<GoStopwatch />Start: {convertISOStringToDate(start_date)} {convertISOStringToTime(start_date)}
+			<div className="SingleBooking__meetingName">
+				{meeting_name}
 			</div>
-			<div>
-				<GoStopwatch />End: {convertISOStringToDate(end_date)} {convertISOStringToTime(end_date)}
+			<div className="SingleBooking__details">
+				<GoStopwatch 
+					style={{
+						verticalAlign: "bottom",
+						fontSize: "20px",
+						marginRight: "10px",
+					}}
+				/>
+				Start: {convertISOStringToDate(start_date)} {convertISOStringToTime(start_date)}
+			</div>
+			<div className="SingleBooking__details">
+				<GoStopwatch 
+					style={{
+						verticalAlign: "bottom",
+						fontSize: "20px",
+						marginRight: "10px",
+					}}
+				/>
+				End: {convertISOStringToDate(end_date)} {convertISOStringToTime(end_date)}
 			</div>
 		</div>
 	);

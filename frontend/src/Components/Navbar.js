@@ -9,18 +9,18 @@ import Box from "@mui/material/Box";
 import styled from "@mui/system/styled";
 
 // StyledTab component for setting background color for active Tab from MUI
-const StyledTab = styled(Tab)(({ isActive }) => (
+const StyledTab = styled(Tab)(({ selected }) => (
     {
-        backgroundColor: isActive ? "white" : "lightgrey",
-        border: isActive ? "2px solid #4d4d4d" : "1px solid #4d4d4d",
-        borderStyle: isActive ? "solid solid" : "none solid",
-        borderRadius: isActive ? "5px" : "0px",
-		color: isActive ? "rgb(74,74,74)" : "rgb(74,74,74)",
-        margin: isActive ? "-1px 0px -1px 0px" : "0px",
+        backgroundColor: selected ? "white" : "lightgrey",
+        border: selected ? "2px solid #4d4d4d" : "1px solid #4d4d4d",
+        borderStyle: selected ? "solid solid" : "none solid",
+        borderRadius: selected ? "5px" : "0px",
+		color: selected ? "rgb(74,74,74)" : "rgb(74,74,74)",
+        margin: selected ? "-1px 0px -1px 0px" : "0px",
         "&.Mui-selected": {
-            backgroundColor: isActive ? "white" : "lightgrey",
-            color: isActive ? "rgb(74,74,74)" : "rgb(74,74,74)",
-            boxShadow: isActive ? "0px 0px 0px 2px #4d4d4d" : "0px",
+            backgroundColor: selected ? "white" : "lightgrey",
+            color: selected ? "rgb(74,74,74)" : "rgb(74,74,74)",
+            boxShadow: selected ? "0px 0px 0px 2px #4d4d4d" : "0px",
         },
     }
 ));
@@ -49,7 +49,7 @@ const Navbar = () => {
 							fontSize: "18px",
 						}}
 						value={0}
-						isActive={currentTab === 0}
+						selected={currentTab === 0}
 						component={Link}
 						to="/"
 					/>
@@ -61,7 +61,7 @@ const Navbar = () => {
 							fontSize: "18px",
 						}}
 						value={1}
-						isActive={currentTab === 1}
+						selected={currentTab === 1}
 						component={Link}
 						to="/bookings"
 					/>
@@ -73,7 +73,7 @@ const Navbar = () => {
 							fontSize: "18px",
 						}}
 						value={2}
-						isActive={currentTab === 2}
+						selected={currentTab === 2}
 						component={Link}
 						to="/meetingrooms/new"
 					/>
