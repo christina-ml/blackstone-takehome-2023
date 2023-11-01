@@ -2,12 +2,15 @@
 
 Coding challenge where you build a Meeting Room Booking App client that interacts with a RESTful API using React.
 
+# Deployment
+Backend Deployment:
+- [ElephantSQL](https://www.elephantsql.com/)
+
 # How to Run This Project
 Fork and clone this repository.
 ```
 npm install
 ```
-
 
 # Backend
 
@@ -31,7 +34,7 @@ Technologies:
 Technologies: 
 - [React.js](https://react.dev)
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+- [Axios](https://axios-http.com/docs/intro)
 
 ### Dependencies
 Libraries:
@@ -40,11 +43,14 @@ Libraries:
 npm install @mui/material @emotion/react @emotion/styled
 ```
 - [SCSS/SASS](https://sass-lang.com/install/) - for SCSS styling
+- [dotenv](https://www.npmjs.com/package/dotenv) - To use environment variables from the `.env` file.
 
 ### MaterialUI
 References to documentation:
 - [Tabs](https://mui.com/material-ui/react-tabs/)
 
-# Deployment
-Backend Deployment:
-- [ElephantSQL](https://www.elephantsql.com/)
+### React Icons
+- [react-icons](https://react-icons.github.io/react-icons) - Include popular icons in your React projects easily with react-icons, which utilizes ES6 imports
+
+### References
+- [CSS fonts examples](https://www.w3.org/Style/Examples/007/fonts.en.html)

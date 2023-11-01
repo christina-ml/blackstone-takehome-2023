@@ -21,7 +21,10 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="Home">
+			{/* <div className="Home__hrTag">
+				<hr />
+			</div> */}
 			{meetingRooms.map((meetingRoom) => {
               return (
 			  	<MeetingRooms 
@@ -32,9 +35,9 @@ const Home = () => {
             })}
 
 			{loading && 
-				<div className="loadingView">
+				<div className="Home__loadingView">
 					Loading...
-					<div className="loadingView__spinnerIcon"></div>
+					<div className="Home__loadingView__spinnerIcon"></div>
 				</div>
 			}
 		</div>

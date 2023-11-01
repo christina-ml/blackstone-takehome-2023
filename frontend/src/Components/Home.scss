@@ -1,20 +1,26 @@
 @import "../designUtils/colors";
 
-.loadingView {
-	margin-top: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-items: center;
-	align-items: center;
+.Home {
+	&__hrTag {
+		padding: 10px 0px;
+	}
 
-	&__spinnerIcon {
-		margin-right: 10px;
-		width: 20px;
-		height: 20px;
-		border: 3px solid $grey;
-		border-top: 3px solid $black;
-		border-radius: 50%;
-		animation: spinner 1.3s linear infinite;
+	&__loadingView {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		align-items: center;
+	
+		&__spinnerIcon {
+			margin-right: 10px;
+			width: 20px;
+			height: 20px;
+			border: 3px solid $grey;
+			border-top: 3px solid $black;
+			border-radius: 50%;
+			animation: spinner 1.3s linear infinite;
+		}
 	}
 }
 
