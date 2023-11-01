@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import SingleBooking from "./SingleBooking";
+import BookingsDetails from "./BookingsDetails";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -9,7 +9,7 @@ const Bookings = () => {
 
 	useEffect(() => {
 		axios
-			.get(API + '/bookings')
+			.get(API + "/bookings")
 			.then((res) => {
 				setAllBookings(res.data);
 			})
@@ -22,7 +22,7 @@ const Bookings = () => {
 		<div>
 			{allBookings.map((booking) => {
 				return (
-					<SingleBooking 
+					<BookingsDetails 
 						key={booking.id} 
 						booking={booking} 
 					/>
