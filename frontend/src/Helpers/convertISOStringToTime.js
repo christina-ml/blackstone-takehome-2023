@@ -1,7 +1,8 @@
 // YYYY-MM-DDTHH:MI:SS.000Z
 const convertISOStringToTime = (timeToConvert) => {
-    let hours = timeToConvert.slice(11, 13);
-    let minutes = timeToConvert.slice(14, 16);
+    // specify data type to avoid Uncaught TypeError
+    let hours =  String(timeToConvert).slice(11, 13);
+    let minutes =  String(timeToConvert).slice(14, 16);
 
     // variable for AM or PM
     let amOrPm = "AM";
