@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GoPeople } from "react-icons/go";
 import "./SingleMeetingRoom.scss";
+import SingleMeetingRoomBookings from "./SingleMeetingRoomBookings";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -55,6 +56,7 @@ const SingleMeetingRoom = () => {
 				</div>
 			</div>
 			<hr />
+			<SingleMeetingRoomBookings  />
 		</div>
 	);
 };

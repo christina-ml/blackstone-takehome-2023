@@ -1,0 +1,25 @@
+@import "../designUtils/colors";
+@import "../designUtils/fonts";
+
+// .SingleMeetingRoomBookings {}
+
+.SingleMeetingRoomBookingDetails {
+    border: 3px solid $black;
+    border-radius: 7px;
+    margin: 0px 0px 10px 0px;
+    padding: 20px;
+    &__bookingName {
+        font-size: 24px;
+        font-weight: 600;
+        font-family: $headerFontFamily;
+        a {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+
+    &__details {
+        padding: 5px 0px;
+        font-weight: 300;
+    }
+}
