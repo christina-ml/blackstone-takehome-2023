@@ -1,3 +1,5 @@
+@import "../designUtils/fonts";
+
 .SingleMeetingRoom {
 	&__details {
 		padding: 20px 5px 10px 5px;
@@ -7,6 +9,7 @@
 		&__name {
 			font-weight: 600;
 			font-size: 22px;
+			font-family: $headerFontFamily;
 		}
 		&__capacity {
 			font-size: 18px;
