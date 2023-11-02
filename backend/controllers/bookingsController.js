@@ -43,7 +43,6 @@ bookings.get("/:id", async (req, res)=> {
         // const booking = await getBookingById(id);
 		const booking = await getBookingByIdWithMeetingRooms(id);
         if (booking){
-			console.log("BOOKING:", booking)
             res.status(200).json(booking);
         } else {
             res.status(500).json({ error: `Error: booking with ID ${id} not found.` });
