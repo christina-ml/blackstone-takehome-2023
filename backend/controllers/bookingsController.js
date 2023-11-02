@@ -2,8 +2,10 @@ const express = require("express");
 const bookings = express.Router();
 
 const {
-    getAllBookings, 
+    getAllBookings,
+	getAllBookingsAndMeetingRooms, 
 	getBookingById,
+	getBookingByIdWithMeetingRooms,
     createBooking,
 	deleteBookingById
 } = require("../queries/bookings");
@@ -13,11 +15,13 @@ const { validateCreateBooking } = require("../validations/bookingsValidations.js
 
 /*
 	GET	/api/bookings
-	get all bookings
+	// get all bookings
+	get all bookings and meeting rooms
 */
 bookings.get("/", async (_req, res) => {
 	try {
-		const allBookings = await getAllBookings();
+		// const allBookings = await getAllBookings();
+		const allBookings = await getAllBookingsAndMeetingRooms();
 		if (allBookings[0]) {
 			res.status(200).json(allBookings);
 		} else {
@@ -29,14 +33,17 @@ bookings.get("/", async (_req, res) => {
 });
 
 /*
-    // GET	/api/bookings/:id
-    Get booking by booking id
+    GET	/api/bookings/:id
+    // Get booking by booking id
+	Get booking by booking id and meeting rooms
 */
 bookings.get("/:id", async (req, res)=> {
     const { id } = req.params;
     try {
-        const booking = await getBookingById(id);
+        // const booking = await getBookingById(id);
+		const booking = await getBookingByIdWithMeetingRooms(id);
         if (booking){
+			console.log("BOOKING:", booking)
             res.status(200).json(booking);
         } else {
             res.status(500).json({ error: `Error: booking with ID ${id} not found.` });

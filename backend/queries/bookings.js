@@ -10,11 +10,31 @@ const getAllBookings = async () => {
 	}
 };
 
+// get all bookings and meetingRooms
+const getAllBookingsAndMeetingRooms = async () => {
+	try {
+		const allBookingsAndMeetingRooms = await db.any("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id");
+		return allBookingsAndMeetingRooms;
+	} catch (err) {
+		return err;
+	}
+};
+
 // get bookings  by id
 const getBookingById = async(id) => {
     try {
         const bookingById = await db.oneOrNone("SELECT * FROM bookings WHERE id=$1", id);
         return bookingById;
+    } catch (error) {
+        return error;
+    }
+}
+
+// get bookings by id with meeting rooms
+const getBookingByIdWithMeetingRooms = async(id) => {
+    try {
+        const bookingByIdWithMeetingRoom = await db.oneOrNone("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id WHERE bookings.id=$1", id);
+        return bookingByIdWithMeetingRoom;
     } catch (error) {
         return error;
     }
@@ -67,7 +87,9 @@ const deleteBookingById = async (id) => {
 
 module.exports = {
 	getAllBookings,
+    getAllBookingsAndMeetingRooms,
     getBookingById,
+    getBookingByIdWithMeetingRooms,
     createBooking,
     deleteBookingById
 };
