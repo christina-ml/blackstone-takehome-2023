@@ -130,7 +130,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 							<td>
 								<input
 									id="start_date"
-									value={available.start_date}
+									value={available.start_date || ""}
 									type="datetime-local"
 									onChange={handleDateAndTimeChange}
 									style={{ width: "min-content" }}
@@ -145,7 +145,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 							<td>
 								<input
 									id="end_date"
-									value={available.end_date}
+									value={available.end_date || ""}
 									type="datetime-local"
 									onChange={handleDateAndTimeChange}
 									style={{ width: "min-content" }}
@@ -160,7 +160,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 							<td>
 								<input
 									id="floor"
-									value={available.floor}
+									value={available.floor || ""}
 									type="number"
 									onChange={handleNumberChange}
 									placeholder="22"
@@ -175,7 +175,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 							<td>
 								<input
 									id="capacity"
-									value={available.capacity}
+									value={available.capacity || ""}
 									type="number"
 									onChange={handleNumberChange}
 									min="0"

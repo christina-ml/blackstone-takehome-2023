@@ -26,7 +26,7 @@ const AvailableRooms = ({ available }) => {
 		<div>
 			{filteredAvailable.map((availableBooking) => {
 				return (
-					<div className="AvailableRooms">
+					<div className="AvailableRooms" key={availableBooking.id}>
 						<div className="AvailableRooms__name">
 							<Link
 								to={`meetingrooms/${availableBooking.meeting_room_id}`}
