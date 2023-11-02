@@ -81,7 +81,7 @@ const NewBooking = () => {
 									value={newBooking.meeting_name}
 									type="text"
 									onChange={handleTextChange}
-									placeholder="New meeting room name"
+									placeholder=""
 									required
 								/>
 							</td>
@@ -125,7 +125,7 @@ const NewBooking = () => {
 									type="text"
 									onChange={handleTextChange}
 									min="0"
-									placeholder="robert@blackstone.com"
+									placeholder=""
 								/>
 							</td>
 						</tr>

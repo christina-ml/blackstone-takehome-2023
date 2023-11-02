@@ -23,7 +23,7 @@ const Bookings = () => {
 			{allBookings.map((booking) => {
 				return (
 					<BookingsDetails 
-						key={booking.id} 
+						key={booking.id + booking.start_date} 
 						booking={booking} 
 					/>
 				)

@@ -7,6 +7,7 @@ import Button from "./Button/Button";
 
 // react icons
 import { GoStopwatch } from "react-icons/go";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 // Helper functions
 import convertISOStringToDate from "../Helpers/convertISOStringToDate";
@@ -67,6 +68,16 @@ const SingleBooking = () => {
 				/>
 				End: {convertISOStringToDate(end_date)}{" "}
 				{convertISOStringToTime(end_date)}
+			</div>
+			<div className="SingleBooking__details">
+				<HiOutlineBuildingOffice2 
+					style={{
+						verticalAlign: "bottom",
+						fontSize: "20px",
+						marginRight: "10px",
+					}}
+				/>
+				Floor: {booking.floor}
 			</div>
 			<Button buttonText="Cancel" onClick={handleDelete} />
 		</div>

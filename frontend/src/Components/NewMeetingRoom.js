@@ -100,6 +100,7 @@ const NewMeetingRoom = () => {
 									min="0"
 									placeholder="4"
 									required
+									style={{ textAlign:"center" }}
 								/>
 							</td>
 						</tr>
