@@ -68,8 +68,7 @@ const createBooking = async (booking) => {
             );
             return newBooking;
         } else {
-            // console.log("-->:", bookingAlreadyExists)
-            // console.log("error - booking already exists. There is a conflict; do not proceed with the booking")
+            console.log("error - booking already exists. There is a conflict; do not proceed with the booking")
         }
 
 
