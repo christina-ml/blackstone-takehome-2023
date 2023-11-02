@@ -1,0 +1,20 @@
+@import "../designUtils/colors";
+@import "../designUtils/fonts";
+
+.Available {
+	form {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		line-height: 2em;
+		font-weight: 300;
+		input {
+			width: 170px;
+			padding: 5px;
+			border: 2px solid $black;
+			border-radius: 5px;
+			font-size: 16px;
+			margin: 3px 0px 3px 10px;
+		}
+	}
+}
