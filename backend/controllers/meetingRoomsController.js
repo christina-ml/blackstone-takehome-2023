@@ -3,7 +3,8 @@ const meetingRooms = express.Router();
 
 const {
     getAllMeetingRooms,
-    getAllMeetingRoomsAndBookingsBtwnStartAndEnd,
+    getAllMeetingRoomsAndBookingsNotBetweenStartAndEnd,
+    // getAllMeetingRoomsAndBookingsBtwnStartAndEnd,
     getMeetingRoomById,
     createMeetingRoom
 } = require("../queries/meetingRooms");
@@ -38,11 +39,11 @@ meetingRooms.get("/available", async (req, res)=> {
     const { start_date, end_date, floor, capacity } = req.query;
 
     try {
-        const allMeetingRoomsBtwnStartAndEnd = await getAllMeetingRoomsAndBookingsBtwnStartAndEnd(start_date, end_date, floor || null, capacity || null);
-        if (allMeetingRoomsBtwnStartAndEnd[0]){
-            res.status(200).json(allMeetingRoomsBtwnStartAndEnd);
+        const allMeetingRoomsNotBtwnStartAndEnd = await getAllMeetingRoomsAndBookingsNotBetweenStartAndEnd(start_date, end_date, floor || null, capacity || null);
+        if (allMeetingRoomsNotBtwnStartAndEnd[0]){
+            res.status(200).json(allMeetingRoomsNotBtwnStartAndEnd);
         } else {
-            res.status(500).json({ error: "Error: there are no meeting rooms with bookings between this start_date and end_date" });
+            res.status(500).json({ error: "Error: there are no available meeting rooms with bookings, outside of this start_date and end_date range" });
         }
     } catch (err) {
         console.log(err);
