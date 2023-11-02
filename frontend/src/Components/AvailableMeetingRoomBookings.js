@@ -29,7 +29,6 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 						floor
 				)
 				.then((res) => {
-					console.log(res.data);
 					setAvailable(res.data);
 				})
 				.catch((err) => {
@@ -48,7 +47,6 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 						capacity
 				)
 				.then((res) => {
-					console.log(res.data);
 					setAvailable(res.data);
 				})
 				.catch((err) => {
@@ -69,7 +67,6 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 						capacity
 				)
 				.then((res) => {
-					console.log(res.data);
 					setAvailable(res.data);
 				})
 				.catch((err) => {
@@ -86,7 +83,6 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 						end_date
 				)
 				.then((res) => {
-					console.log(res.data);
 					setAvailable(res.data);
 				})
 				.catch((err) => {

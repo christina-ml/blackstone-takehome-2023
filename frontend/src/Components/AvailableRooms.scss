@@ -1,0 +1,39 @@
+@import "../designUtils/colors";
+@import "../designUtils/fonts";
+
+.AvailableRooms {
+	border: 2px solid $black;
+	border-radius: 5px;
+	margin: 0px 0px 10px 0px;
+	padding: 10px 10px;
+	width: calc(100% - 20px);
+	line-height: 1.8em;
+
+	&__name {
+		font-size: 20px;
+		font-weight: 600;
+		font-family: $headerFontFamily;
+		a {
+			text-decoration: none;
+			color: $black;
+		}
+	}
+
+	&__capacity {
+		margin-left: 5px;
+		font-size: 18px;
+		font-weight: 300;
+		&__capacityDetails {
+			padding-left: 10px;
+		}
+	}
+
+	&__floor {
+		margin-left: 5px;
+		font-size: 18px;
+		font-weight: 300;
+		&__floorDetails {
+			padding-left: 10px;
+		}
+	}
+}
