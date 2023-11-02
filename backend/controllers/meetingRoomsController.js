@@ -4,7 +4,6 @@ const meetingRooms = express.Router();
 const {
     getAllMeetingRooms,
     getAllMeetingRoomsAndBookingsNotBetweenStartAndEnd,
-    // getAllMeetingRoomsAndBookingsBtwnStartAndEnd,
     getMeetingRoomById,
     createMeetingRoom
 } = require("../queries/meetingRooms");

@@ -1,19 +1,22 @@
 const db = require("../db/dbConfig.js");
 
-// get all bookings
+/* 
+    get all bookings
+    List all future bookings
+*/
 const getAllBookings = async () => {
 	try {
-		const allBookings = await db.any("SELECT * FROM bookings");
+		const allBookings = await db.any("SELECT * FROM bookings WHERE start_date >= CURRENT_TIMESTAMP");
 		return allBookings;
 	} catch (err) {
 		return err;
 	}
 };
 
-// get all bookings and meetingRooms
+// get all future bookings and meetingRooms
 const getAllBookingsAndMeetingRooms = async () => {
 	try {
-		const allBookingsAndMeetingRooms = await db.any("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id");
+		const allBookingsAndMeetingRooms = await db.any("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id WHERE bookings.start_date >= CURRENT_TIMESTAMP");
 		return allBookingsAndMeetingRooms;
 	} catch (err) {
 		return err;

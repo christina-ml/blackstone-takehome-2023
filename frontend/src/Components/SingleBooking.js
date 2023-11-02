@@ -37,7 +37,7 @@ const SingleBooking = () => {
 		axios
 			.delete(`${API}/bookings/${id}`)
 			.then((res) => {
-				navigate("/bookings");
+				navigate("/");
 			})
 			.catch((err) => {
 				console.log(err);
