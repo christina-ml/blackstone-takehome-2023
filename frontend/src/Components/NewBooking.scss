@@ -1,13 +1,15 @@
 @import "../designUtils/fonts";
 
 .NewBooking {
+    line-height: 2em;
+
     &__roomName {
-        font-weight: 600;
-        font-size: 22px;
-        font-family: $headerFontFamily;
+        font-weight: 300;
+        padding-left: 2px;
     }
 
     form {
+        font-weight: 300;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;

@@ -57,7 +57,7 @@ const SingleMeetingRoom = () => {
 				</div>
 			</div>
 			<hr />
-			<NewBooking meetingRoom={meetingRoom} />
+			<NewBooking />
 			<hr />
 			<SingleMeetingRoomBookings  />
 		</div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./NewBooking.scss";
 
@@ -8,10 +8,9 @@ import convertDateTimeStrToPOST from "../Helpers/convertDateTimeStringToPost";
 
 const API = process.env.REACT_APP_API_URL;
 
-const NewBooking = ({meetingRoom}) => {
+const NewBooking = () => {
 	const navigate = useNavigate();
-
-	console.log("meeting room ID:", meetingRoom.id)
+	const { id } = useParams();
 
 	const addMeetingRoom = (newBooking) => {
 		axios
@@ -25,9 +24,10 @@ const NewBooking = ({meetingRoom}) => {
 			.catch((c) => console.warn("catch", c));
 	};
 
+	// set meeting room ID to current meeting room
 	const [newBooking, setNewBooking] = useState({
 		meeting_name: "",
-		meeting_room_id: meetingRoom.id, // set meeting room ID to current meeting room
+		meeting_room_id: `${id}`,
 		start_date: "",
 		end_date: "",
 		attendees: "",
@@ -45,11 +45,11 @@ const NewBooking = ({meetingRoom}) => {
 			Convert date and time format from form: type="datetime-local"
 			To be able to POST to backend in the same format as the `seed.sql` data
 		*/
-		let result = convertDateTimeStrToPOST(event.target.value);
+		const convertedDateTime = convertDateTimeStrToPOST(event.target.value);
 
 		setNewBooking({
 			...newBooking,
-			[event.target.id]: result,
+			[event.target.id]: convertedDateTime,
 		});
 	};
 
@@ -61,8 +61,7 @@ const NewBooking = ({meetingRoom}) => {
 
 	return (
 		<div className="NewBooking">
-			<div className="NewBooking__roomName">Book Room</div>
-
+			<div className="NewBooking__roomName">Book Room:</div>
 			<form
 				className="NewBooking__newBookingForm"
 				onSubmit={handleSubmit}
@@ -71,7 +70,9 @@ const NewBooking = ({meetingRoom}) => {
 					<tbody>
 						<tr>
 							<td>
-								<label htmlFor="meeting_name">Meeting Name:</label>
+								<label htmlFor="meeting_name">
+									Meeting Name:
+								</label>
 							</td>
 							<td>
 								<input
@@ -127,9 +128,11 @@ const NewBooking = ({meetingRoom}) => {
 								/>
 							</td>
 						</tr>
-						<input type="submit" />
 					</tbody>
 				</table>
+				<div>
+					<input type="submit" />
+				</div>
 			</form>
 		</div>
 	);
