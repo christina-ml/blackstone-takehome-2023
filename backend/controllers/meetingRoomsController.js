@@ -3,6 +3,7 @@ const meetingRooms = express.Router();
 
 const {
     getAllMeetingRooms,
+    getAllMeetingRoomsAndBookingsBtwnStartAndEnd,
     getMeetingRoomById,
     createMeetingRoom
 } = require("../queries/meetingRooms");
@@ -22,6 +23,26 @@ meetingRooms.get("/", async (_req, res)=> {
             res.status(200).json(allMeetingRooms);
         } else {
             res.status(500).json({ error: "Error: there are no meeting rooms" });
+        }
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+/*
+    Extra challenge
+    // POST	/api/meeting-rooms/available
+    GET	/api/meeting-rooms/available
+*/
+meetingRooms.get("/available", async (req, res)=> {
+    const { start_date, end_date, floor, capacity } = req.query;
+
+    try {
+        const allMeetingRoomsBtwnStartAndEnd = await getAllMeetingRoomsAndBookingsBtwnStartAndEnd(start_date, end_date, floor || null, capacity || null);
+        if (allMeetingRoomsBtwnStartAndEnd[0]){
+            res.status(200).json(allMeetingRoomsBtwnStartAndEnd);
+        } else {
+            res.status(500).json({ error: "Error: there are no meeting rooms with bookings between this start_date and end_date" });
         }
     } catch (err) {
         console.log(err);
@@ -63,10 +84,5 @@ meetingRooms.post("/", async (req, res)=> {
         console.log(err);
     }
 })
-
-/*
-    Extra challenge
-    POST	/api/meeting-rooms/available
-*/
 
 module.exports = meetingRooms;
