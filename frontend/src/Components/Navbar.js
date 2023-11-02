@@ -12,7 +12,7 @@ import styled from "@mui/system/styled";
 const StyledTab = styled(Tab)(({ selected }) => (
     {
         backgroundColor: selected ? "white" : "lightgrey",
-        border: selected ? "2px solid #4d4d4d" : "1px solid #4d4d4d",
+        border: selected ? "1px solid #4d4d4d" : "1px solid #4d4d4d",
         borderStyle: selected ? "solid solid" : "none solid",
         borderRadius: selected ? "5px" : "0px",
 		color: selected ? "rgb(74,74,74)" : "rgb(74,74,74)",
@@ -46,7 +46,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "18px",
+							fontSize: "16px",
 						}}
 						value={0}
 						selected={currentTab === 0}
@@ -58,7 +58,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "18px",
+							fontSize: "16px",
 						}}
 						value={1}
 						selected={currentTab === 1}
@@ -70,7 +70,7 @@ const Navbar = () => {
 						style={{
 							minWidth: "33.33%",
 							textTransform: "capitalize",
-							fontSize: "18px",
+							fontSize: "16px",
 						}}
 						value={2}
 						selected={currentTab === 2}

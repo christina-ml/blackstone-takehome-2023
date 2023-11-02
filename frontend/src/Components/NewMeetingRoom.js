@@ -67,7 +67,7 @@ const NewMeetingRoom = () => {
 									value={newMeetingRoom.name}
 									type="text"
 									onChange={handleTextChange}
-									placeholder="New meeting room name"
+									placeholder="Boardroom 1"
 									required
 								/>
 							</td>
@@ -111,6 +111,7 @@ const NewMeetingRoom = () => {
 					onClick={handleSubmit}
 				/>
 			</form>
+			<div className="NewMeetingRoom__lineBreak"></div>
 			<hr />
 		</div>
 	);

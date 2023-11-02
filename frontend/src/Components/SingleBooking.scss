@@ -1,14 +1,14 @@
 @import "../designUtils/colors";
 
 .SingleBooking {
-    margin: 0px 0px 10px 0px;
-    &__meetingName {
-        font-size: 24px;
-        font-weight: 600;
-        padding: 0px 0px 20px 0px;
-    }
-    &__details {
-        padding: 5px 0px;
-        font-weight: 300;
-    }
+	margin: 0px 0px 10px 0px;
+	&__meetingName {
+		font-size: 20px;
+		font-weight: 500;
+		padding: 0px 0px 20px 0px;
+	}
+	&__details {
+		padding: 5px 0px;
+		font-weight: 300;
+	}
 }

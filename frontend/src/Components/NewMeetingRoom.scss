@@ -1,15 +1,30 @@
 @import "../designUtils/fonts";
+@import "../designUtils/colors";
 
 .NewMeetingRoom {
     &__roomName {
-        font-weight: 600;
-        font-size: 22px;
-        font-family: $headerFontFamily;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 0px 0px 5px 0px;
     }
 
     form {
         display: flex;
-        justify-content: flex-start;
+        align-items: flex-start;
         flex-direction: column;
+        line-height: 2em;
+        font-weight: 300;
+        input {
+            width: 120px;
+            padding: 5px;
+            margin-left: 10px;
+            border: 2px solid $black;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    }
+
+    &__lineBreak {
+        padding: 5px;
     }
 }
