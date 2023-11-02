@@ -1,17 +1,18 @@
 @import "../designUtils/fonts";
 
 .NewBooking {
-    line-height: 2em;
-
+    
     &__roomName {
         font-weight: 300;
         padding-left: 2px;
+        line-height: 2em;
     }
-
+    
     form {
         font-weight: 300;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
+        line-height: 2em;
     }
 }

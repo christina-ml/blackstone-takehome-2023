@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./NewMeetingRoom.scss";
+import Button from "./Button/Button";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -102,9 +103,13 @@ const NewMeetingRoom = () => {
 								/>
 							</td>
 						</tr>
-						<input type="submit" />
 					</tbody>
 				</table>
+				<Button 
+					type="submit"
+					buttonText="Submit"
+					onClick={handleSubmit}
+				/>
 			</form>
 			<hr />
 		</div>

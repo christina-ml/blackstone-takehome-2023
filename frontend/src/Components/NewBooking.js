@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./NewBooking.scss";
+import Button from "./Button/Button";
 
 // Helper function
 import convertDateTimeStrToPOST from "../Helpers/convertDateTimeStringToPost";
@@ -130,9 +131,10 @@ const NewBooking = () => {
 						</tr>
 					</tbody>
 				</table>
-				<div>
-					<input type="submit" />
-				</div>
+				<Button
+					type="submit"
+					buttonText="Submit"
+				/>
 			</form>
 		</div>
 	);
