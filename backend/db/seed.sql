@@ -9,8 +9,9 @@ INSERT INTO meeting_rooms (name, capacity, floor) VALUES
 INSERT INTO bookings (meeting_name, meeting_room_id, start_date, end_date, attendees) VALUES
 ('Team Alpha - Scrum Standup', 1, '2024-10-29 10:56:00', '2024-10-29 14:56:00', 'jdoe@email.com, bdylan@email.com'),
 ('Star Team - Backlog Refinement', 1, '2024-11-11 11:12:01', '2024-11-11 13:12:01', 'SASchwarzman@email.com, michaelC@email.com'),
+('Old Team - Ancient Hacks', 1, '2021-05-11 11:12:01', '2021-05-11 13:12:01', 'pursuit@email.com, hackers@email.com'),
 ('Project Eureka - Requirements Gathering', 2, '2023-12-09 15:15:21', '2023-12-09 15:45:21', 'JGFinley@email.com, JonathanG@email.com'),
-('Star Team - Backlog Refinement 2', 1, '2023-12-11 05:23:44', '2023-12-11 13:20:44', 'JStecher@email.com, cAnderson@email.com'),
+('Cyber Team - Backlog Refinement 2', 1, '2023-12-11 05:23:44', '2023-12-11 13:20:44', 'JStecher@email.com, cAnderson@email.com'),
 ('Team Beta - Scrum Requirements', 3, '2024-08-29 10:56:00', '2024-08-29 14:56:00', 'PaigeR@email.com, vSawhney@email.com'),
 ('Project Cyber - Tech Huddle', 4, '2023-12-08 15:15:21', '2023-12-08 15:45:21', 'JoanS@email.com, nGalakatos@email.com'),
 ('Blackstone Team - Takehome Review', 2, '2023-11-06 10:15:21', '2023-11-06 10:45:21', 'robertP@email.com, ashimS@email.com'),

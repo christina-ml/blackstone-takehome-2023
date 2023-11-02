@@ -4,7 +4,7 @@ const db = require("../db/dbConfig.js");
 const getAllBookingsByMeetingRoomId = async (meeting_room_id) => {
 	try {
 		const allBookings = await db.any(
-			"SELECT * FROM bookings WHERE meeting_room_id = $1",
+			"SELECT * FROM bookings WHERE meeting_room_id = $1 AND start_date >= CURRENT_TIMESTAMP",
 			meeting_room_id
 		);
 		return allBookings;
