@@ -16,7 +16,12 @@ const getAllBookings = async () => {
 // get all future bookings and meetingRooms
 const getAllBookingsAndMeetingRooms = async () => {
 	try {
-		const allBookingsAndMeetingRooms = await db.any("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id WHERE bookings.start_date >= CURRENT_TIMESTAMP");
+		const allBookingsAndMeetingRooms = await db.any(`
+        SELECT * FROM bookings 
+        JOIN meeting_rooms 
+        ON bookings.meeting_room_id = meeting_rooms.id 
+        WHERE bookings.start_date >= CURRENT_TIMESTAMP
+        `);
 		return allBookingsAndMeetingRooms;
 	} catch (err) {
 		return err;
@@ -36,7 +41,12 @@ const getBookingById = async(id) => {
 // get bookings by id with meeting rooms
 const getBookingByIdWithMeetingRooms = async(id) => {
     try {
-        const bookingByIdWithMeetingRoom = await db.oneOrNone("SELECT * FROM bookings JOIN meeting_rooms ON bookings.meeting_room_id = meeting_rooms.id WHERE bookings.id=$1", id);
+        const bookingByIdWithMeetingRoom = await db.oneOrNone(`
+        SELECT * FROM bookings 
+        JOIN meeting_rooms 
+        ON bookings.meeting_room_id = meeting_rooms.id 
+        WHERE bookings.id=$1
+        `, id);
         return bookingByIdWithMeetingRoom;
     } catch (error) {
         return error;
@@ -46,16 +56,19 @@ const getBookingByIdWithMeetingRooms = async(id) => {
 // create a booking
 const createBooking = async (booking) => {
     const { meeting_name, meeting_room_id, start_date, end_date, attendees }  = booking;
-
-    const bookingAlreadyExists = await db.oneOrNone("SELECT * FROM bookings WHERE meeting_room_id = $1 AND (start_date >= $2 AND end_date <= $3)",
-        [meeting_room_id, start_date, end_date]
-    );
-
+    
     try {
-        if (!bookingAlreadyExists){
-            // console.log ("No conflicts found; proceed with the booking")
-            // console.log("bookingAlreadyExists:", bookingAlreadyExists)
+        // check if booking already exists
+        const bookingAlreadyExists = await db.oneOrNone(`
+        SELECT * FROM bookings 
+        WHERE meeting_room_id = $1 
+        AND (start_date >= $2 AND end_date <= $3)
+        `,
+            [meeting_room_id, start_date, end_date]
+        );
 
+        // create a new booking
+        if (!bookingAlreadyExists){
             const newBooking = await db.oneOrNone(
                 "INSERT INTO bookings (meeting_name, meeting_room_id, start_date, end_date, attendees) VALUES ($1, $2, $3, $4, $5) RETURNING *",
                 [
@@ -68,10 +81,8 @@ const createBooking = async (booking) => {
             );
             return newBooking;
         } else {
-            console.log("error - booking already exists. There is a conflict; do not proceed with the booking")
+            return {error: "booking already exists"};
         }
-
-
     } catch (err) {
         return err;
     }
