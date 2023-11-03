@@ -16,7 +16,8 @@
         line-height: 2em;
         font-weight: 300;
         input {
-            width: 170px;
+            width: 200px;
+            min-width: fit-content;
             padding: 5px;
             border: 2px solid $black;
             border-radius: 5px;

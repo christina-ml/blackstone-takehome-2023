@@ -17,10 +17,12 @@ const getAllBookings = async () => {
 const getAllBookingsAndMeetingRooms = async () => {
 	try {
 		const allBookingsAndMeetingRooms = await db.any(`
-        SELECT * FROM bookings 
+        SELECT bookings.*, meeting_rooms.name, meeting_rooms.capacity, meeting_rooms.floor
+        FROM bookings 
         JOIN meeting_rooms 
         ON bookings.meeting_room_id = meeting_rooms.id 
         WHERE bookings.start_date >= CURRENT_TIMESTAMP
+        ORDER BY bookings.id
         `);
 		return allBookingsAndMeetingRooms;
 	} catch (err) {
@@ -31,7 +33,10 @@ const getAllBookingsAndMeetingRooms = async () => {
 // get bookings  by id
 const getBookingById = async(id) => {
     try {
-        const bookingById = await db.oneOrNone("SELECT * FROM bookings WHERE id=$1", id);
+        const bookingById = await db.one(`
+        SELECT * FROM bookings 
+        WHERE id=$1
+        `, id);
         return bookingById;
     } catch (error) {
         return error;
@@ -39,19 +44,21 @@ const getBookingById = async(id) => {
 }
 
 // get bookings by id with meeting rooms
-const getBookingByIdWithMeetingRooms = async(id) => {
+const getBookingByIdWithMeetingRooms = async (id) => {
     try {
-        const bookingByIdWithMeetingRoom = await db.oneOrNone(`
-        SELECT * FROM bookings 
-        JOIN meeting_rooms 
-        ON bookings.meeting_room_id = meeting_rooms.id 
-        WHERE bookings.id=$1
-        `, id);
-        return bookingByIdWithMeetingRoom;
+      const bookingByIdWithMeetingRoom = await db.oneOrNone(`
+        SELECT bookings.*, meeting_rooms.name, meeting_rooms.capacity, meeting_rooms.floor
+        FROM bookings
+        LEFT JOIN meeting_rooms 
+        ON bookings.meeting_room_id = meeting_rooms.id
+        WHERE bookings.id = $1
+      `, id);
+      return bookingByIdWithMeetingRoom;
     } catch (error) {
-        return error;
+      return error;
     }
-}
+  }
+  
 
 // create a booking
 const createBooking = async (booking) => {

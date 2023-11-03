@@ -3,7 +3,14 @@ const db = require("../db/dbConfig.js");
 // get all meeting rooms
 const getAllMeetingRooms = async() => {
     try {
-        const allMeetingRooms = await db.any("SELECT * FROM meeting_rooms");
+        const allMeetingRooms = await db.any(`
+        SELECT * FROM meeting_rooms
+        `);
+        // const allMeetingRooms = await db.any(`
+        // SELECT * FROM meeting_rooms 
+        // LEFT JOIN bookings 
+        // ON meeting_rooms.id = bookings.meeting_room_id
+        // `);
         return allMeetingRooms;
     } catch (error) {
         return error;

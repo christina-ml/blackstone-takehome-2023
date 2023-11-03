@@ -10,6 +10,7 @@ import convertDateTimeStrToPOST from "../Helpers/convertDateTimeStringToPost";
 const API = process.env.REACT_APP_API_URL;
 
 const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
+	console.log("AvailableMeetingRoomBookings.js:", available)
 	const navigate = useNavigate();
 
 	const getAvailable = (available) => {
@@ -19,15 +20,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 		if (start_date && end_date && floor && capacity === undefined) {
 			// if floor
 			axios
-				.get(
-					API +
-						"/meeting-rooms/available?start_date=" +
-						start_date +
-						"&end_date=" +
-						end_date +
-						"&floor=" +
-						floor
-				)
+				.get(API + "/meeting-rooms/available?start_date=" + start_date + "&end_date=" + end_date + "&floor=" + floor)
 				.then((res) => {
 					setAvailable(res.data);
 				})
@@ -37,15 +30,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 		} else if (start_date && end_date && capacity && floor === undefined) {
 			// if capacity
 			axios
-				.get(
-					API +
-						"/meeting-rooms/available?start_date=" +
-						start_date +
-						"&end_date=" +
-						end_date +
-						"&capacity=" +
-						capacity
-				)
+				.get(API + "/meeting-rooms/available?start_date=" + start_date + "&end_date=" + end_date + "&capacity=" + capacity)
 				.then((res) => {
 					setAvailable(res.data);
 				})
@@ -55,17 +40,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 		} else if (start_date && end_date && floor && capacity) {
 			// if floor and capacity
 			axios
-				.get(
-					API +
-						"/meeting-rooms/available?start_date=" +
-						start_date +
-						"&end_date=" +
-						end_date +
-						"&floor=" +
-						floor +
-						"&capacity=" +
-						capacity
-				)
+				.get(API + "/meeting-rooms/available?start_date=" + start_date + "&end_date=" + end_date + "&floor=" + floor + "&capacity=" + capacity)
 				.then((res) => {
 					setAvailable(res.data);
 				})
@@ -75,13 +50,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 		} else {
 			// else start_date & end_date, which are required fields
 			axios
-				.get(
-					API +
-						"/meeting-rooms/available?start_date=" +
-						start_date +
-						"&end_date=" +
-						end_date
-				)
+				.get(API + "/meeting-rooms/available?start_date=" + start_date + "&end_date=" + end_date)
 				.then((res) => {
 					setAvailable(res.data);
 				})
