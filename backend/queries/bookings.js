@@ -31,7 +31,7 @@ const getAllBookingsAndMeetingRooms = async () => {
 };
 
 // get bookings  by id
-const getBookingById = async(id) => {
+const getBookingsById = async(id) => {
     try {
         const bookingById = await db.one(`
         SELECT * FROM bookings 
@@ -108,7 +108,7 @@ const deleteBookingById = async (id) => {
 module.exports = {
 	getAllBookings,
     getAllBookingsAndMeetingRooms,
-    getBookingById,
+    getBookingsById,
     getBookingByIdWithMeetingRooms,
     createBooking,
     deleteBookingById

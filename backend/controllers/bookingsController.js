@@ -4,7 +4,7 @@ const bookings = express.Router();
 const {
     getAllBookings,
 	getAllBookingsAndMeetingRooms, 
-	getBookingById,
+	getBookingsById,
 	getBookingByIdWithMeetingRooms,
     createBooking,
 	deleteBookingById
@@ -40,7 +40,7 @@ bookings.get("/", async (_req, res) => {
 bookings.get("/:id", async (req, res)=> {
     const { id } = req.params;
     try {
-        // const booking = await getBookingById(id);
+        // const booking = await getBookingsById(id);
 		const booking = await getBookingByIdWithMeetingRooms(id);
         if (booking){
             res.status(200).json(booking);
