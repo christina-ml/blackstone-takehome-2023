@@ -31,6 +31,11 @@ const SingleMeetingRoomBookings = () => {
 
 	return (
 		<div className="SingleMeetingRoomBookings">
+			{!meetingRoomBookings.length &&
+			<div>
+				There are no bookings for this meeting room.
+			</div>
+			}
 			{meetingRoomBookings.map((meetingRoomBooking) => {
 				const { meeting_name, start_date, end_date } =
 					meetingRoomBooking;
@@ -38,7 +43,7 @@ const SingleMeetingRoomBookings = () => {
 				return (
 					<div className="SingleMeetingRoomBookingDetails" key={meetingRoomBooking.id}>
 						<div className="SingleMeetingRoomBookingDetails__bookingName">
-							<Link to={`/bookings/${id}`}>{meeting_name}</Link>
+							<Link to={`/bookings/${meetingRoomBooking.id}`}>{meeting_name}</Link>
 						</div>
 						<div className="SingleMeetingRoomBookingDetails__details">
 							<GoStopwatch
