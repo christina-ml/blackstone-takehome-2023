@@ -3,8 +3,18 @@
 Coding challenge where you build a Meeting Room Booking App client that interacts with a RESTful API using React.
 
 # Deployment
+## Deployed Links
+Deployed Backend: [https://blackstone-takehome-2023-be.onrender.com](https://blackstone-takehome-2023-be.onrender.com)
+
+Deployed Frontend: [https://blackstone-takehome-cl.netlify.app/](https://blackstone-takehome-cl.netlify.app/)
+
+---
 Backend Deployment:
-- [ElephantSQL](https://www.elephantsql.com/)
+- [ElephantSQL](https://www.elephantsql.com/) - ElephantSQL installs and manages PostgreSQL databases for you
+- [Render](https://dashboard.render.com/) - Render is a unified cloud to build and run all your apps and websites with free TLS certificates, global CDN, private networks and auto deploys from Git.
+
+Frontend Deployment:
+- [Netlify](https://www.netlify.com/) - Netlify is a remote-first cloud computing company that offers a development platform that includes build, deploy, and serverless backend services for web applications and dynamic websites.
 
 # How to Run This Project
 
