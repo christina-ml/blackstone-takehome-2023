@@ -9,8 +9,14 @@ import convertDateTimeStrToPOST from "../Helpers/convertDateTimeStringToPost";
 
 const API = process.env.REACT_APP_API_URL;
 
-const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
-	console.log("AvailableMeetingRoomBookings.js:", available)
+const AvailableMeetingRoomBookings = ({ 
+		available, 
+		setAvailable, 
+		setStartDateSearch, 
+		setEndDateSearch, 
+		setFloorSearch, 
+		setCapacitySearch 
+	}) => {
 	const navigate = useNavigate();
 
 	const getAvailable = (available) => {
@@ -60,14 +66,31 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 		}
 	};
 
-	const handleNumberChange = (event) => {
+	const handleNumberChangeFloor = (event) => {
+		const floorInput = event.target.value;
+
 		setAvailable({
 			...available,
-			[event.target.id]: event.target.value,
+			[event.target.id]: floorInput,
 		});
+
+		// set search term to a variable
+		setFloorSearch(floorInput);
 	};
 
-	const handleDateAndTimeChange = (event) => {
+	const handleNumberChangeCapacity = (event) => {
+		const capacityInput = event.target.value;
+
+		setAvailable({
+			...available,
+			[event.target.id]: capacityInput,
+		});
+
+		// set search term to a variable
+		setCapacitySearch(capacityInput);
+	};
+
+	const handleDateAndTimeChangeStart = (event) => {
 		/*
 			Convert date and time format from form: type="datetime-local"
 			To be able to POST to backend in the same format as the `seed.sql` data
@@ -78,6 +101,25 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 			...available,
 			[event.target.id]: convertedDateTime,
 		});
+		// set search term to a variable
+		setStartDateSearch(convertedDateTime);
+
+	};
+
+	const handleDateAndTimeChangeEnd = (event) => {
+		/*
+			Convert date and time format from form: type="datetime-local"
+			To be able to POST to backend in the same format as the `seed.sql` data
+		*/
+		const convertedDateTime = convertDateTimeStrToPOST(event.target.value);
+
+		setAvailable({
+			...available,
+			[event.target.id]: convertedDateTime,
+		});
+
+		// set search term to a variable
+		setEndDateSearch(convertedDateTime);
 	};
 
 	const handleSubmit = (event) => {
@@ -101,7 +143,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 									id="start_date"
 									value={available.start_date || ""}
 									type="datetime-local"
-									onChange={handleDateAndTimeChange}
+									onChange={handleDateAndTimeChangeStart}
 									style={{ width: "min-content" }}
 									required
 								/>
@@ -116,7 +158,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 									id="end_date"
 									value={available.end_date || ""}
 									type="datetime-local"
-									onChange={handleDateAndTimeChange}
+									onChange={handleDateAndTimeChangeEnd}
 									style={{ width: "min-content" }}
 									required
 								/>
@@ -131,7 +173,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 									id="floor"
 									value={available.floor || ""}
 									type="number"
-									onChange={handleNumberChange}
+									onChange={handleNumberChangeFloor}
 									placeholder="22"
 									style={{ width: "120px" }}
 								/>
@@ -146,7 +188,7 @@ const AvailableMeetingRoomBookings = ({ available, setAvailable }) => {
 									id="capacity"
 									value={available.capacity || ""}
 									type="number"
-									onChange={handleNumberChange}
+									onChange={handleNumberChangeCapacity}
 									min="0"
 									placeholder="4"
 									style={{
